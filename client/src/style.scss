@@ -1,5 +1,23 @@
-$body-bg: #000;
-// $primary: rgb(129, 13, 187);
+$body-bg: #fff;
+$primary: #375E97;
+$info: #548de4;
+$warning: #FB6542;
+$success: #379747;
 
 // Importing Bootstrap and it's default values
 @import '~bootstrap/scss/bootstrap.scss';
+
+footer {
+    height: 100px;
+    bottom: 0;
+}
+  
+mark {
+    font-weight: bold;
+    background-color: $primary;
+    color: white;
+}
+
+.btn {
+    border-radius: 0 !important;
+}

@@ -1,28 +1,19 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Lists from './components/lists/Lists';
+
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: " " };
-  }
-
-  callAPI() {
-    fetch('http://localhost:9000/test/test')
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
-  }
-
-  componentDidMount() {
-    this.callAPI();
-  }
-
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>{ this.state.apiResponse }</p>
-        </header>
-      </div>
+      <Switch>
+        <Route path="/lists" component={Lists}/>
+        <Route path="/about" component={About} />
+        <Route exact path="/" component={Home} />
+      </Switch>
     );
   }
 

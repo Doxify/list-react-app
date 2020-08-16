@@ -1,0 +1,13 @@
+.hero-feature-card {
+    width: 20em; 
+    height: 20em;
+}
+
+.card {
+    border: 0 !important;
+}
+
+.card-text {
+    font-size: larger;
+}
+
