@@ -1,10 +1,12 @@
-const ListModel = require('../models/List');
+const ListModel     = require('../models/List');
+const LocalStorage  = require('../config/localStorage');
 
 const ListController = {
     createList: function(req, res, next) {
         ListModel.create()
             .then((listCreated) => {
                 if(listCreated) {
+                    LocalStorage.addList(id);
                     res.status(201).json({
                         message: 'List successfully created.',
                         id: listCreated
@@ -32,6 +34,7 @@ const ListController = {
         ListModel.delete(id)
             .then((listDeleted) => {
                 if(listDeleted) {
+                    LocalStorage.removeList(id);
                     res.status(200).json({
                         message: 'List successfully deleted.'
                     });

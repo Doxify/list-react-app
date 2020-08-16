@@ -36,6 +36,14 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // Database issue.
+  if(res.locals.message === 'ECONNREFUSED') {
+    return res.status(200).json({
+      status: 'ERROR',
+      message: 'Database error occurred, please try again later.'
+    });
+  }
+
   // send error
   res.status(err.status || 500);
   res.json({
