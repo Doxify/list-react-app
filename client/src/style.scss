@@ -2,19 +2,54 @@ $body-bg: #fff;
 $primary: #375E97;
 $info: #548de4;
 $warning: #FB6542;
-$success: #379747;
+$success: #61b341;
+$dark: #0b0e1f;
+
 
 // Importing Bootstrap and it's default values
 @import '~bootstrap/scss/bootstrap.scss';
 
-footer {
-    height: 100px;
-    bottom: 0;
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
+    padding-bottom: 6rem;
 }
-  
+
+// Overwriting Bootstrap
+.form-control {
+    color: $primary;
+    border: .05em solid $primary !important;
+}
+.form-control::placeholder {
+    color: $primary;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+hr {
+    color: $primary;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 mark {
     font-weight: bold;
     background-color: $primary;
+    color: white;
+}
+
+markinfo {
+    font-weight: bold;
+    background-color: $dark;
     color: white;
 }
 

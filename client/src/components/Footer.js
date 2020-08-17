@@ -1,35 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Footer extends React.Component {
-//   callAPI() {
-//     fetch('http://localhost:9000/test/test')
-//       .then(res => res.text())
-//       .then(res => this.setState({ apiResponse: res }));
-//   }
-
-//   componentDidMount() {
-//     this.callAPI();
-//   }
-
   render() {
     return (
-      // <footer className="navbar navbar-expand-lg navbar-light bg-light">
-      //   <div className="container primary">
-      //     {/* <span class="navbar-brand">List App</span>
-      //     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      //       <span class="navbar-toggler-icon"></span>
-      //     </button>
-
-      //     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      //       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-      //         <li class="nav-item">
-      //           <Link to="/">Home</Link>
-      //         </li>
-      //       </ul>
-      //     </div> */}
-      //   </div>
-      // </footer>
-      ""
+      <footer className="bg-primary">
+        <div className="container bg-primary text-light p-5">
+          <div className="row">
+            <div className="col-sm-3">
+              <h5 className="text-info">Pages</h5>
+              <ul>
+                <li><a className="nav-link"><Link className="text-light" to="/">Home</Link></a></li>
+                <li><a className="nav-link"><Link className="text-light" to="/lists">Lists</Link></a></li>
+                <li><a className="nav-link"><Link className="text-light" to="/about">About / FAQ</Link></a></li>
+              </ul>
+            </div>
+            <div className="col-sm-3">
+              <h5 className="text-info">Links</h5>
+              <ul>
+                <li><a className="nav-link text-light" href="https://github.com/doxify/list-react-app">Source Code</a></li>
+                <li><a className="nav-link text-light" href="mailto:ageorgescu@mail.sfsu.edu">Contact Me</a></li>
+              </ul>
+            </div>
+            <div className="col d-flex justify-content-end">
+              <p>made with 💖 by <a className="text-light" href="https://github.com/doxify">Andrei Georgescu</a></p>
+            </div>
+          </div>
+        </div>    
+      </footer>  
     );
   }
 

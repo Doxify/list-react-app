@@ -10,7 +10,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="container mt-5" style={{paddingTop: 5 + 'em'}}>
+      <div className="container mt-5 mb-5" style={{paddingTop: 5 + 'em', paddingBottom: 10 + 'em'}}>
           <Hero />
           <HeroNewList/>
           <HeroFeatures />
