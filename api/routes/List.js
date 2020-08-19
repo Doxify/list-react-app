@@ -18,5 +18,9 @@ router.post('/rename', (req, res, next) => {
   ListController.renameList(req, res, next);
 });
 
+router.get('/getListsData', (req, res, next) => {
+  ListController.getListsData(req, res, next);
+});
+
 
 module.exports = router;

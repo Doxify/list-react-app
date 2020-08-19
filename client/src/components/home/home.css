@@ -1,6 +1,9 @@
-.hero-feature-card {
-    width: 20em; 
-    height: 20em;
+.hero-container {
+    padding-top: 5em;
+}
+
+.hero-features-container {
+    padding-bottom: 20em;
 }
 
 .card {

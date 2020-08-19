@@ -3,12 +3,11 @@ import ReminderSVG from '../../images/reminder_note.svg';
 import SavingsSVG from '../../images/wallet.svg';
 import CollaborateSVG from '../../images/collab.svg';
 
-
 class HeroFeatures extends React.Component {
   render() {
     return (
         <div className="row">
-            <div className="col d-flex">
+            <div className="col-sm-12 col-md-6 col-lg-4">
                 <div className="card text-center m-2 hero-feature-card">
                     <div className="card-body p-2">
                         <h3 className="card-title display-6">Simple</h3>
@@ -17,7 +16,7 @@ class HeroFeatures extends React.Component {
                     </div>
                 </div>
             </div>
-            <div className="col d-flex">
+            <div className="col-sm-12 col-md-6 col-lg-4">
                 <div className="card text-center m-2 hero-feature-card">
                     <div className="card-body p-2">
                         <h3 className="card-title display-6">Collaborate</h3>
@@ -26,7 +25,7 @@ class HeroFeatures extends React.Component {
                     </div>
                 </div>
             </div>
-            <div className="col d-flex">
+            <div className="col-sm-12 col-md-6 col-lg-4">
                 <div className="card text-center m-2 hero-feature-card">
                     <div className="card-body p-2">
                         <h3 className="card-title display-6">Free</h3>

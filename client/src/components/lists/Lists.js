@@ -1,6 +1,7 @@
 import React from 'react';
-import './list.css';
+import './list.scss';
 import Thumbnail from './Thumbnail';
+import NewListButton from '../NewListButton';
 import LocalStorage from '../../utils/LocalStorage';
 
 import axios from 'axios';
@@ -10,75 +11,49 @@ class Lists extends React.Component {
 		super(props);
 
 		this.state = {
-			lists: [
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				},
-				{
-					name: 'This is my First List',
-					created: 'June 11, 2020',
-					id: 'iddwdawd',
-					items: 232
-				},
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				},
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				},
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				},
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				},
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				},
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				},
-				{
-					name: 'First List',
-					created: 'April 21, 2020',
-					id: 'iddwdawd',
-					items: 21
-				}
-			],
+			lists: [],
 			loading: false
 		}
+	
+		this.loadListFromDatabase = this.loadListFromDatabase.bind(this);
 	}
 
+	/**
+	 * Wg
+	 */
 	componentDidMount() {
-		this.setState({ lists: LocalStorage.getLists()})
+		let lists = LocalStorage.getLists();
+		if(!lists) return;
+
+		// Loading lists data from the database for each list.
+		lists.forEach((id) => {
+			this.loadListFromDatabase(id);
+		});
+	}
+
+	loadListFromDatabase(id) {
+		axios.get(`${process.env.REACT_APP_API_URL}/list/${id}`)
+			.then((result) => {
+				if(result && result.status === 200) {
+					let data = result.data;
+					this.setState({ lists: this.state.lists.concat(data) });
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			})
 	}
 
 	render() {
 		return (
-			<div className="container mt-5">
-				<h1 className="bd-title">Your Lists</h1>
-				<hr />
+			<div className="container mt-5 mb-5" style={{paddingBottom: 15 + 'em'}}>
+				{/* Header */}
+				<div className="row">
+					<div className="col6">
+						<h1 className="bd-title">Your Lists</h1>
+					</div>
+					<hr />
+				</div>
 
 				{/* Loading */}
 				<div className="row mt-5" hidden={!this.state.loading}>
@@ -90,7 +65,7 @@ class Lists extends React.Component {
 					<div className="col text-center" hidden={this.state.lists.length > 0}>
 						<span className="bd-lead">Sorry, we could not find any lists you've previously accessed on this browser.</span><br/>
 						<span className="text-muted">We store previously accessed lists in your browser's LocalStorage.</span><br/>
-						<button className="btn btn-success text-white mt-4">Create List</button>
+						<NewListButton />
 					</div>
 				</div>
 

@@ -13,7 +13,9 @@ ReactDOM.render(
   <Router>
     <Navigation />
     <App />
-    <Footer />
+    <div className="footer">
+      <Footer />
+    </div>
   </Router>,
   document.getElementById("root")
 );

@@ -7,6 +7,8 @@ const ListItemController = {
         let fk_list = req.body.fk_list;
         let text = req.body.text;
 
+        console.log(req.body);
+
         if(!fk_list) {
             return res.status(400).json({
                 message: 'ID of list is missing'

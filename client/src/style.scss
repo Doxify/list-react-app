@@ -25,11 +25,12 @@ body {
     color: $primary;
 }
 
-footer {
+.footer {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
+    margin-top: 150px;
 }
 
 hr {
@@ -53,6 +54,13 @@ markinfo {
     color: white;
 }
 
-.btn {
-    border-radius: 0 !important;
+
+markdanger {
+    font-weight: bold;
+    background-color: $danger;
+    color: white;
 }
+
+// .btn {
+//     border-radius: 0 !important;
+// }

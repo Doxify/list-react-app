@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-class About extends React.Component {
+class TermsAndConditions extends React.Component {
   render() {
     return (
       <div className="container mt-5">
-        <h1 className="bd-title">About / FAQ</h1>
+        <h1 className="bd-title">Terms and Conditions</h1>
         <hr />
         
-        <h4 className="mt-5">What is Collaborative Lists?</h4>
+        {/* <h4 className="mt-5">What is Collaborative Lists?</h4>
         <p>To put it simply, collaborative lists is an app that allows you to quickly create a list from anywhere. Since the website is mobile friendly, you can easily create a new list and share it with someone on your computer, phone, or anywhere you can access a browser.</p>
         
         <h4 className="mt-5">Is it really free?</h4>
@@ -24,7 +23,7 @@ class About extends React.Component {
         <p>Collaborative Lists was created by <a href="https://github.com/doxify">Andrei Georgescu</a>. </p>
 
         <h4 className="mt-5">Who created the art?</h4>
-        <p>The artwork on this website is from <a href="https://manypixels.co">manypixels</a>. </p>
+        <p>The artwork on this website is from <a href="https://manypixels.co">manypixels</a>. </p> */}
       
       </div>
     );
@@ -32,4 +31,4 @@ class About extends React.Component {
 
 }
 
-export default About;
+export default TermsAndConditions;

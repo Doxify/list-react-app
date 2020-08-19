@@ -4,6 +4,7 @@ var express        = require('express');
 var path           = require('path');
 var logger         = require('morgan');
 var cors           = require('cors');
+var bodyParser     = require('body-parser');
 
 // Routes
 var listRouter     = require('./routes/List');
@@ -20,6 +21,8 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // configuring routes
 app.use('/list', listRouter);
@@ -45,6 +48,7 @@ app.use(function(err, req, res, next) {
   }
 
   // send error
+  console.log(err);
   res.status(err.status || 500);
   res.json({
     message: res.locals.error || 'Invalid route.'

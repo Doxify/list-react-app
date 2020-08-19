@@ -3,17 +3,22 @@ import React from 'react';
 import './home.css';
 import Hero from './Hero';
 import HeroFeatures from './HeroFeatures';
-import HeroNewList from './HeroNewList';
-
+import HeroMetrics from './HeroMetrics';
 
 class Home extends React.Component {
 
   render() {
     return (
-      <div className="container mt-5 mb-5" style={{paddingTop: 5 + 'em', paddingBottom: 10 + 'em'}}>
+      <div>
+        <div className="hero-container mt-5">
           <Hero />
-          <HeroNewList/>
+        </div>
+        <div className="hero-metrics-container-fluid">
+          <HeroMetrics />
+        </div>
+        <div className="hero-features-container mb-5">
           <HeroFeatures />
+        </div>
       </div>
     );
   }

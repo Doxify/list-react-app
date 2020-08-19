@@ -1,12 +1,13 @@
 import React from 'react';
-import '../list.css';
 
 class ListItem extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			id: props.id || null
+			id: props.id || null,
+			text: props.text || "",
+			completed: props.completed || false
 		}
 
     	this.handleChange = this.handleChange.bind(this);
@@ -14,16 +15,21 @@ class ListItem extends React.Component {
 
 	render() {
 		return (
-			<div className="col-sm-12">
-				<div className="card list-item">
+			<div className="col-sm-12 list-item">
+				<div className="card">
 					<div className="card-body form-check">
-						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={this.props.completed} />
-						<label class="form-check-label card-text" for="flexCheckChecked">
+						<input 
+							className="form-check-input" 
+							type="checkbox" 
+							name={this.props.id}
+							checked={this.props.completed}
+							onChange={this.handleChange}
+						/>
+						<label className="form-check-label card-text">
 							{this.props.text}
 						</label>
-						{/* TODO: Only show this on hover */}
-						<button className="btn btn-sm btn-danger float-right small" onClick={this.delete}>❌ Delete</button>
-						<button className="btn btn-sm btn-warning float-right small text-white mr-2">✏ Edit</button>
+						<button className="list-item-button float-right small" onClick={this.delete}><span role="img" aria-label="delete emoji">❌</span></button>
+						<button className="list-item-button float-right small text-white mr-2"><span role="img" aria-label="pencil emoji">✏</span></button>
 					</div>
 				</div>
 			</div>
@@ -34,6 +40,7 @@ class ListItem extends React.Component {
 	}
 
 	handleChange(event) {
+		console.log(event.target.name);
 		this.setState({ [event.target.name]: event.target.value });
 	}
 

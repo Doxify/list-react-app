@@ -1,0 +1,32 @@
+@import '../../style.scss';
+
+a:link {
+    text-decoration: none !important;
+}
+
+a:visited {
+    text-decoration: none !important;
+}
+
+.list-item button {
+    vertical-align: middle;
+    display: none;
+}
+
+.list-item:hover button {
+    display: block;
+}
+
+.list-item-button {
+    border: 0;
+    padding: 4px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+}
+
+.list-item-button:hover {
+    background-color: $primary;
+}

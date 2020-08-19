@@ -61,7 +61,11 @@ const ListModel = {
     get: function(id) {
         let baseSQL = `
             SELECT BIN_TO_UUID(l.id, true) AS id, l.name, l.created, l.updated, 
-                CAST(CONCAT('[', GROUP_CONCAT(JSON_OBJECT('id', i.id, 'text', i.text, 'completed', i.completed)), ']') AS JSON) as "items"
+                CAST(CONCAT(
+                    '[', 
+                    GROUP_CONCAT(JSON_OBJECT('id', i.id, 'text', i.text, 'completed', i.completed)), 
+                    ']'
+                ) AS JSON) as "items"
             FROM lists l 
             LEFT JOIN items i ON l.id=i.fk_list
             WHERE l.id=UUID_TO_BIN(?, true);
@@ -69,10 +73,35 @@ const ListModel = {
         return db.query(baseSQL, [id])
             .then(([result, fields]) => {
                 if(result) {
-                    return Promise.resolve(result);
+                    // MySQL creates a null object in the items array if there are no items
+                    // found for a list. (This is what happens when a list is first created.)
+                    // This is my work-around for removing that null object, but there may
+                    // be something I can do to alter my query in order to avoid doing this.
+                    if(result[0].items[0].id === null) {
+                       result[0].items = []
+                    }
+
+                    return Promise.resolve(result[0]);
                 } else {
                     return Promise.resolve(false);
                 }
+            })
+            .catch((err) => { throw err; })
+    },
+    getListsData: function() {
+        let baseSQL = `
+            SELECT COUNT(*)
+            FROM lists;
+        `;
+
+        return db.query(baseSQL)
+            .then(([result, fields]) => {
+                if(result) {
+                    console.log(result);
+                    return Promise.resolve(true);
+                } else {
+                    return Promise.resolve(false);
+      []          }
             })
             .catch((err) => { throw err; })
     }

@@ -21,6 +21,9 @@ const localStorage = {
             lists = []
         }
 
+        // Don't add the list if it's already there.
+        if(lists.includes(id)) return;
+
         // Adding the list id into the collection.
         lists.push(id);
 

@@ -1,6 +1,8 @@
 import React from 'react';
-import './list.css';
 import { Link } from 'react-router-dom';
+
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 class Thumbnail extends React.Component {
     render() {
@@ -11,17 +13,15 @@ class Thumbnail extends React.Component {
                     <div className="card-body">
                         <div className="card-body">
                             <div className="card-title">
-                                <markinfo>{this.props.name}</markinfo><br/>
-                                <small>{this.props.id}</small>
+                                <mark> {this.props.name || 'List'}</mark><br/>
                             </div>
-                            <div className="card-text mt-4 mb-4">
-                                <p className="small text-black">
-                                    📝 {this.props.items} items
+                            <div className="card-text text-muted">
+                                <p>
+                                    {this.props.items.length > 0 ? this.props.items.length + " items" : "empty" }
                                 </p>
+                                <p className="small">Created <Moment fromNow ago>{this.props.created}</Moment> ago</p>
+
                             </div>
-                            <p className="card-text">
-                                <p className="text-muted small">Created on {this.props.created}</p>
-                            </p>
                         </div>
                     </div>
                 </div>
